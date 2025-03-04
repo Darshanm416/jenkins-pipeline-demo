@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         string(name: 'ENV', defaultValue: 'dev', description: 'choose the deployment env')
-        choice(name: 'Deploy_type', choices: ['Rolling', 'Blue-Green'], description: 'choose deploy type')
+        choice(name: '${DEPLOY_TYPE}', choices: ['Rolling', 'Blue-Green'], description: 'choose deploy type')
     }
     stages {
         stage('Checkout') {
@@ -12,7 +12,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'echo "building"'
+                sh 'echo "building in ${ENV}"'
             }
         }
         stage('test') {
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'echo "deploying...."'
+                sh 'echo "deploying... in ${DEPLOY_TYPE}."'
             }
         }
     }   
