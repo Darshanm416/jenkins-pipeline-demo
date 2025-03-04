@@ -25,18 +25,17 @@ pipeline {
                 sh 'echo "deploying... in ${DEPLOY_TYPE}."'
             }
         }
-        post {
-            success {
-                mail to: 'idarshankm@gmail.com',
-                    subject: "Build Succeeded: ${currentBuild.fullDisplayName}",
-                    body: "The build was successful. Check Jenkins for more details."
-            }
-            failure {
-                mail to: 'idarshankm@gmail.com',
-                    subject: "Build Failed: ${currentBuild.fullDisplayName}",
-                    body: "The build failed. Check Jenkins logs for details."
-            }
-        }       
-
-    }   
+    }
+    post {
+        success {
+            mail to: 'idarshankm@gmail.com',
+                subject: "Build Succeeded: ${currentBuild.fullDisplayName}",
+                body: "The build was successful. Check Jenkins for more details."
+        }
+        failure {
+            mail to: 'idarshankm@gmail.com',
+                subject: "Build Failed: ${currentBuild.fullDisplayName}",
+                body: "The build failed. Check Jenkins logs for details."
+        }
+    }          
 }
