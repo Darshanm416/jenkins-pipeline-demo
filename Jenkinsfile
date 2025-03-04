@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'ENV', defaultValue: 'dev', description: 'choose the deployment env')
+        choice(name: 'Deploy_type', choices: ['Rolling', 'Blue-Green'], description: 'choose deploy type')
+    }
     stages {
         stage('Checkout') {
             steps {
