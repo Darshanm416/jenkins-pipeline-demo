@@ -6,7 +6,7 @@ pipeline {
                 git 'https://github.com/Darshanm416/jenkins-pipeline-demo.git'
             }
         }
-        stage(''build) {
+        stage('build') {
             steps {
                 sh 'echo "building"'
             }
