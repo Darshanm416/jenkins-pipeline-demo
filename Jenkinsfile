@@ -17,7 +17,9 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'echo "testing.."'
+                retry(3) {
+                    sh 'echo "testing.."'
+                }
             }
         }
         stage('deploy') {
