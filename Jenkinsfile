@@ -37,5 +37,9 @@ pipeline {
                 subject: "Build Failed: ${currentBuild.fullDisplayName}",
                 body: "The build failed. Check Jenkins logs for details."
         }
-    }          
-}
+        always {
+            slackSend channel: '#devops', message: "Build ${currentBuild.fullDisplayName} - ${currentBuild.result}"
+        }
+    }
+}          
+
