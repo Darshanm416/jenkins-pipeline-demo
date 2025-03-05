@@ -41,8 +41,6 @@ pipeline {
         }
         always {
             slackSend channel: '#devops', message: "Build ${currentBuild.fullDisplayName} - ${currentBuild.result}"
-        }
-        always {
             echo "cleaning workspace"
             deleteDir()
         }
